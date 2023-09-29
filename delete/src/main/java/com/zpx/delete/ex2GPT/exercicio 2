@@ -1,0 +1,23 @@
+Claro, aqui está outro exercício simples de injeção de dependência em um aplicativo Spring Boot:
+
+**Objetivo:** Crie um aplicativo de gerenciamento de pedidos de restaurante usando Spring Boot.
+ O aplicativo deve permitir que os clientes façam pedidos,
+ que os pedidos sejam registrados e que os detalhes dos pedidos sejam consultados.
+
+**Requisitos:**
+
+1. Crie uma classe `Pedido` com atributos como `id`, `nomeDoCliente`, `itens` e `total`.
+
+2. Crie uma interface `PedidoService` que defina métodos para registrar pedidos, listar pedidos e calcular o total de um pedido.
+
+3. Implemente a interface `PedidoService` em uma classe chamada `PedidoServiceImpl`. Esta classe deve conter a lógica para gerenciar os pedidos.
+
+4. Crie um controlador (`PedidoController`) que permita a interação com o aplicativo através de URLs. Defina métodos para registrar pedidos, listar pedidos e consultar detalhes de um pedido.
+
+5. Configure o aplicativo Spring Boot para funcionar corretamente com injeção de dependência, de modo que o `PedidoController` possa usar o `PedidoService` para realizar operações de pedido.
+
+6. Implemente uma interface de usuário simples (pode ser um frontend em HTML, se desejar) que permita aos clientes fazerem pedidos, listar pedidos e verificar detalhes dos pedidos.
+
+**Dica:** Use anotações do Spring como `@RestController`, `@Service` e `@Autowired` para configurar as classes e a injeção de dependência.
+
+Este exercício envolve a criação de várias classes, configurações e interações entre elas. Ele ajudará você a entender como criar um aplicativo Spring Boot com injeção de dependência e a construir uma aplicação de gerenciamento de pedidos de restaurante simples. Boa sorte!

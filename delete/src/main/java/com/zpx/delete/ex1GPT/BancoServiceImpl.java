@@ -1,4 +1,4 @@
-package com.zpx.delete.exGPT;
+package com.zpx.delete.ex1GPT;
 
 import org.springframework.stereotype.Component;
 

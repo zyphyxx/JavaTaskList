@@ -1,4 +1,4 @@
-package com.zpx.delete.exGPT;
+package com.zpx.delete.ex1GPT;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

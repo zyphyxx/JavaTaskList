@@ -1,5 +1,3 @@
----
-
 # JavaTaskList
 
 ## Sobre o Projeto
@@ -25,5 +23,3 @@ O projeto JavaTaskList é uma aplicação simples de lista de tarefas desenvolvi
 ## Contribuição
 
 Contribuições são bem-vindas! Para sugestões, melhorias ou correções, sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
----

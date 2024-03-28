@@ -1,8 +1,9 @@
+import model.Task;
 import java.util.Scanner;
 
 public class TaskListApp {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -12,6 +13,8 @@ public class TaskListApp {
         //exibir
         //remover
         //sair
+
+
     }
 
     private static void exibirMenu () {
@@ -38,31 +41,41 @@ public class TaskListApp {
                     break;
                 case 3: removerTarefa();
                     break;
-
-
+                case 4: sair();
+                    break;
                 default:
-                    System.out.println("Digite uma opçao valida");
+                    System.out.println("DIGITE UMA OPÇÃO VALIDA");
 
             }
 
         } while (valor != 4);
-
-        sair();
-
-
     }
 
     private static void adicionarTarefas () {
-        // TODO: 27/03/2024
-        System.out.println("adicionar tarefas");
-        scanner.close();
+
+        int count = 0;
+
+        System.out.println("QUANTAS TAREFAS VOCÊ QUER ADICIONAR ?");
+        int valor = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Digite a(s) tarefas: ");
+
+        do {
+
+            Task.listaTarefas.add(scanner.nextLine());
+            count++;
+
+        } while (count < valor);
+
+        System.out.println("TAREFAS ADICIONADAS COM SUCESSO!!");
 
     }
 
     private static void exibirTarefas () {
         // TODO: 27/03/2024
-        System.out.println("exibindo tarefas");
-        scanner.close();
+        System.out.println(Task.listaTarefas);
+
 
     }
 
@@ -74,7 +87,7 @@ public class TaskListApp {
 
     private static void sair () {
         // TODO: 27/03/2024
-        System.out.println("ate a proxima");
+        System.out.println("ATÉ A PROXIMA ;D");
         scanner.close();
 
     }

@@ -1,5 +1,4 @@
 import model.Task;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,12 +8,7 @@ public class TaskListApp {
 
     public static void main(String[] args) {
 
-        // exibir o menu
         exibirMenu();
-        // adicionar
-        //exibir
-        //remover
-        //sair
 
     }
 
@@ -26,14 +20,14 @@ public class TaskListApp {
 
             try {
 
-                System.out.println("==== Task List App ===");
+                System.out.println("\n==== \u001B[1mBem-vindo ao Task List App\u001B[0m ====");
                 System.out.println();
-                System.out.println("1- Adicionar tarefas");
-                System.out.println("2- Exibir tarefas");
-                System.out.println("3- Remover tarefas");
-                System.out.println("4- Sair");
+                System.out.println("\u001B[33m1- Adicionar Tarefa\u001B[0m");
+                System.out.println("\u001B[34m2- Exibir Tarefas\u001B[0m");
+                System.out.println("\u001B[35m3- Remover Tarefa\u001B[0m");
+                System.out.println("\u001B[36m4- Sair\u001B[0m");
                 System.out.println();
-                System.out.println(" Digite sua escolha: ");
+                System.out.println("Escolha uma opção: ");
 
                 valor = scanner.nextInt();
 
@@ -51,13 +45,13 @@ public class TaskListApp {
                         sair();
                         break;
                     default:
-                        System.out.println("Opção inválida. Por favor, digite uma opção válida.");
+                        System.out.println("\nOpção inválida. Por favor, escolha uma opção válida.\n");
 
                 }
 
             } catch (InputMismatchException e) {
 
-                System.out.println("Entrada inválida! Por favor, digite um número.");
+                System.out.println("\nEntrada inválida! Por favor, digite um número.\n");
                 scanner.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -73,11 +67,11 @@ public class TaskListApp {
         int count = 0;
         int numEscolhido;
 
-        System.out.println("QUANTAS TAREFAS VOCÊ QUER ADICIONAR ?");
+        System.out.println("\nQuantas tarefas você deseja adicionar?");
         numEscolhido = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Digite a(s) tarefas: ");
+        System.out.println("\nDigite a(s) tarefa(s): ");
 
         do {
 
@@ -86,7 +80,7 @@ public class TaskListApp {
 
         } while (count < numEscolhido);
 
-        System.out.println("TAREFAS ADICIONADAS COM SUCESSO!!");
+        System.out.println("\nTarefa(s) adicionada(s) com sucesso!!\n");
 
     }
 
@@ -96,22 +90,22 @@ public class TaskListApp {
         do {
             try {
 
-                System.out.println("==== SUAS TAREFAS ===");
+                System.out.println("\n\n==== SUAS TAREFAS ===");
 
                 if (Task.listaTarefas.isEmpty()) {
-                    System.out.println("Sua Lista esta vazia");
+                    System.out.println("\nSua lista está vazia\n");
                 } else {
 
                     for (int i = 0; i < Task.listaTarefas.size(); i++) {
-                        System.out.println((i + 1) + "- " + Task.listaTarefas.get(i));
+                        System.out.println("\u001B[37m" + (i + 1) + "- " + Task.listaTarefas.get(i) + "\u001B[0m");
                     }
                     System.out.println();
-                    System.out.println("==== Digite 0 para voltar para o Menu:  ===");
+                    System.out.println("\n==== Digite 0 para voltar para o Menu ===\n");
                     valor = scanner.nextInt();
                 }
 
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("erro de indice:");
+                System.out.println("Erro de indice:");
                 scanner.nextLine();
             }
 
@@ -126,12 +120,12 @@ public class TaskListApp {
 
         try {
 
-            System.out.println("Qual tarefa voce quer remover: ");
+            System.out.println("\nQual tarefa você deseja remover: ");
             scanner.nextLine();
 
             if (Task.listaTarefas.isEmpty()) {
 
-                System.out.println("Sua lista não tem nada para remover");
+                System.out.println("\nSua lista não tem nada para remover\n");
 
             } else {
 
@@ -148,17 +142,14 @@ public class TaskListApp {
 
         } catch (IndexOutOfBoundsException e) {
 
-            System.out.println("erro de indice: ");
+            System.out.println("Erro de indice: ");
         }
 
     }
 
     private static void sair() {
-        // TODO: 27/03/2024
-        System.out.println("ATÉ A PROXIMA ;D");
-
+        System.out.println("\u001B[32m\nAté a próxima ;D\n\u001B[0m");
+        System.exit(0);
     }
-
-
 }
 

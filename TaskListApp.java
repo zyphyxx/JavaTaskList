@@ -1,4 +1,5 @@
 import model.Task;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -124,8 +125,7 @@ public class TaskListApp {
 
         try {
 
-            System.out.println("\nQual tarefa você deseja remover: ");
-            System.out.println("Ou digite \u001B[33m000\u001B[0m para sair:\n");
+            System.out.println("\n\u001B[1mQual tarefa você deseja remover?\u001B[0m");
             scanner.nextLine();
 
             if (Task.listaTarefas.isEmpty()) {
@@ -139,13 +139,11 @@ public class TaskListApp {
                     System.out.println(Task.listaTarefas.indexOf(Task.listaTarefas.get(i)) + " - " + Task.listaTarefas.get(i));
                 }
 
+                System.out.println("Ou digite \u001B[33m000\u001B[0m para sair:");
                 valor = scanner.nextInt();
+                scanner.nextLine();
 
-                if (valor == 000){
-                    exibirMenu();
-                } else {
                     System.out.println(Task.listaTarefas.remove(Task.listaTarefas.get(valor)) + " Removido com sucesso");
-                }
 
             }
 
@@ -156,7 +154,7 @@ public class TaskListApp {
 
     }
 
-    public static void editarTarefa(){
+    public static void editarTarefa() {
         int valor;
 
         try {

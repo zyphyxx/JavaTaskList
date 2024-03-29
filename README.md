@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto
 
-O projeto JavaTaskList é uma aplicação simples de lista de tarefas desenvolvida em Java puro. Esta aplicação permite aos usuários adicionar, visualizar, editar e remover tarefas de uma lista. Além disso, inclui recursos para marcar tarefas como concluídas e salvar/carregar a lista de tarefas em um arquivo. Este projeto foi criado com o objetivo de fornecer uma implementação básica para fins educacionais, visando praticar conceitos fundamentais de programação em Java.
+O JavaTaskList é uma aplicação simples de lista de tarefas desenvolvida em Java puro. Ele permite aos usuários gerenciar suas tarefas de forma eficiente, oferecendo recursos para adicionar, visualizar, editar e remover tarefas. Além disso, possibilita a marcação de tarefas como concluídas e a opção de salvar e carregar a lista de tarefas em um arquivo. Este projeto foi criado com o propósito de fornecer uma implementação básica para fins educacionais, visando praticar conceitos fundamentais de programação em Java.
 
 ## Funcionalidades
 
@@ -23,3 +23,20 @@ O projeto JavaTaskList é uma aplicação simples de lista de tarefas desenvolvi
 ## Contribuição
 
 Contribuições são bem-vindas! Para sugestões, melhorias ou correções, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## Screenshots
+
+### Menu Principal
+![Menu](https://github.com/zyphyxx/JavaTaskList/assets/127572883/5e8a6754-99ac-4530-b6f3-fa94a906b2ad)
+
+### Adicionar Tarefa
+![Adicionar](https://github.com/zyphyxx/JavaTaskList/assets/127572883/6bb79a98-9def-4d69-aac3-8562f56637e5)
+
+### Listar Tarefas
+![Listar](https://github.com/zyphyxx/JavaTaskList/assets/127572883/ae4c1b3e-3a2d-4423-a800-e4d4500c5486)
+
+### Remover Tarefa
+![Remover](https://github.com/zyphyxx/JavaTaskList/assets/127572883/32fc6849-5d61-40f9-9ca3-e46bf8a29fd3)
+
+### Editar Tarefa
+![Editar](https://github.com/zyphyxx/JavaTaskList/assets/127572883/a5646488-1979-45dd-93e4-cd8fcccab0d5)

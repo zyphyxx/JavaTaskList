@@ -25,7 +25,8 @@ public class TaskListApp {
                 System.out.println("\u001B[33m1- Adicionar Tarefa\u001B[0m");
                 System.out.println("\u001B[34m2- Exibir Tarefas\u001B[0m");
                 System.out.println("\u001B[35m3- Remover Tarefa\u001B[0m");
-                System.out.println("\u001B[36m4- Sair\u001B[0m");
+                System.out.println("\u001B[32m4- Editar Tarefa\u001B[0m");
+                System.out.println("\u001B[36m5- Sair\u001B[0m");
                 System.out.println();
                 System.out.println("Escolha uma opção: ");
 
@@ -42,23 +43,27 @@ public class TaskListApp {
                         removerTarefa();
                         break;
                     case 4:
+                        editarTarefa();
+                        break;
+                    case 5:
                         sair();
                         break;
                     default:
-                        System.out.println("\nOpção inválida. Por favor, escolha uma opção válida.\n");
+                        System.out.println("\n\u001B[31mOpção inválida. Por favor, escolha uma opção válida.\u001B[0m\n");
 
                 }
 
             } catch (InputMismatchException e) {
 
-                System.out.println("\nEntrada inválida! Por favor, digite um número.\n");
+                System.out.println("\n\u001B[31mEntrada inválida! Por favor, digite um número.\u001B[0m\n");
                 scanner.nextLine();
+
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 scanner.nextLine();
             }
 
-        } while (valor != 4);
+        } while (valor != 5);
 
     }
 
@@ -67,11 +72,11 @@ public class TaskListApp {
         int count = 0;
         int numEscolhido;
 
-        System.out.println("\nQuantas tarefas você deseja adicionar?");
+        System.out.println("\n\u001B[1mQuantas tarefas você deseja adicionar?\u001B[0m");
         numEscolhido = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("\nDigite a(s) tarefa(s): ");
+        System.out.println("\n\u001B[1mDigite a(s) tarefa(s):\u001B[0m");
 
         do {
 
@@ -80,7 +85,7 @@ public class TaskListApp {
 
         } while (count < numEscolhido);
 
-        System.out.println("\nTarefa(s) adicionada(s) com sucesso!!\n");
+        System.out.println("\n\u001B[32mTarefa(s) adicionada(s) com sucesso!!\u001B[0m\n");
 
     }
 
@@ -90,28 +95,27 @@ public class TaskListApp {
         do {
             try {
 
-                System.out.println("\n\n==== SUAS TAREFAS ===");
+                System.out.println("\n\n\u001B[1m==== SUAS TAREFAS ====\u001B[0m");
 
                 if (Task.listaTarefas.isEmpty()) {
-                    System.out.println("\nSua lista está vazia\n");
+                    System.out.println("\n\u001B[31mSua lista está vazia\u001B[0m\n");
                 } else {
 
                     for (int i = 0; i < Task.listaTarefas.size(); i++) {
                         System.out.println("\u001B[37m" + (i + 1) + "- " + Task.listaTarefas.get(i) + "\u001B[0m");
                     }
-                    System.out.println();
-                    System.out.println("\n==== Digite 0 para voltar para o Menu ===\n");
+                    System.out.println("\n\u001B[1m==== Digite 000 para voltar para o Menu ====\u001B[0m\n");
                     valor = scanner.nextInt();
                 }
 
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("Erro de indice:");
+                System.out.println("\n\u001B[31mErro de indice.\u001B[0m\n");
                 scanner.nextLine();
             }
 
             exibirMenu();
 
-        } while (valor != 0);
+        } while (valor != 000);
 
     }
 
@@ -121,11 +125,12 @@ public class TaskListApp {
         try {
 
             System.out.println("\nQual tarefa você deseja remover: ");
+            System.out.println("Ou digite \u001B[33m000\u001B[0m para sair:\n");
             scanner.nextLine();
 
             if (Task.listaTarefas.isEmpty()) {
 
-                System.out.println("\nSua lista não tem nada para remover\n");
+                System.out.println("\n\u001B[31mSua lista não tem nada para remover.\u001B[0m\n");
 
             } else {
 
@@ -136,14 +141,57 @@ public class TaskListApp {
 
                 valor = scanner.nextInt();
 
-                System.out.println(Task.listaTarefas.remove(Task.listaTarefas.get(valor)) + " Removido com sucesso");
+                if (valor == 000){
+                    exibirMenu();
+                } else {
+                    System.out.println(Task.listaTarefas.remove(Task.listaTarefas.get(valor)) + " Removido com sucesso");
+                }
 
             }
 
         } catch (IndexOutOfBoundsException e) {
 
-            System.out.println("Erro de indice: ");
+            System.out.println("\n\u001B[31mErro de indice.\u001B[0m\n");
         }
+
+    }
+
+    public static void editarTarefa(){
+        int valor;
+
+        try {
+
+            System.out.println("\n\u001B[1mQual tarefa você deseja alterar:\u001B[0m");
+            scanner.nextLine();
+
+            if (Task.listaTarefas.isEmpty()) {
+
+                System.out.println("\n\u001B[31mSua lista está vazia. Não há tarefas para alterar.\u001B[0m\n");
+
+            } else {
+                System.out.println("\n\u001B[1mLista de Tarefas:\u001B[0m");
+                for (int i = 0; i < Task.listaTarefas.size(); i++) {
+
+                    System.out.println(Task.listaTarefas.indexOf(Task.listaTarefas.get(i)) + " - " + Task.listaTarefas.get(i));
+                }
+
+                System.out.println("\n\u001B[1mDigite o número da tarefa que deseja alterar:\u001B[0m");
+                valor = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("\n\u001B[1mDigite a nova descrição da tarefa:\u001B[0m");
+                String novaTarefa = scanner.nextLine();
+                scanner.nextLine();
+
+                Task.listaTarefas.set(valor, novaTarefa);
+                System.out.println("\n\u001B[32mTarefa alterada com sucesso!\u001B[0m\n");
+            }
+
+        } catch (IndexOutOfBoundsException e) {
+
+            System.out.println("\n\u001B[31mErro: Índice da tarefa inválido.\u001B[0m\n");
+        }
+
 
     }
 

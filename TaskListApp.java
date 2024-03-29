@@ -1,9 +1,12 @@
 import model.Task;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TaskListApp {
 
     private static final Scanner scanner = new Scanner(System.in);
+    static int numEscolhido;
 
     public static void main(String[] args) {
 
@@ -19,36 +22,48 @@ public class TaskListApp {
 
     private static void exibirMenu () {
 
-        int valor;
+        int valor = 0;
 
-        do {
+            do {
 
-            System.out.println("==== Task List App ===");
-            System.out.println();
-            System.out.println("1- Adicionar tarefas");
-            System.out.println("2- Exibir tarefas");
-            System.out.println("3- Remover tarefas");
-            System.out.println("4- Sair");
-            System.out.println();
-            System.out.println(" Digite sua escolha: ");
+                try {
 
-            valor = scanner.nextInt();
+                System.out.println("==== Task List App ===");
+                System.out.println();
+                System.out.println("1- Adicionar tarefas");
+                System.out.println("2- Exibir tarefas");
+                System.out.println("3- Remover tarefas");
+                System.out.println("4- Sair");
+                System.out.println();
+                System.out.println(" Digite sua escolha: ");
 
-            switch (valor) {
-                case 1: adicionarTarefas();
-                    break;
-                case 2: exibirTarefas();
-                    break;
-                case 3: removerTarefa();
-                    break;
-                case 4: sair();
-                    break;
-                default:
-                    System.out.println("DIGITE UMA OPÇÃO VALIDA");
+                valor = scanner.nextInt();
 
-            }
+                switch (valor) {
+                    case 1: adicionarTarefas();
+                        break;
+                    case 2: exibirTarefas();
+                        break;
+                    case 3: removerTarefa();
+                        break;
+                    case 4: sair();
+                        break;
+                    default:
+                        System.out.println("Opção inválida. Por favor, digite uma opção válida.");
 
-        } while (valor != 4);
+                }
+
+                } catch (InputMismatchException e) {
+
+                    System.out.println("Entrada inválida! Por favor, digite um número.");
+                    scanner.nextLine();
+                } catch (IllegalArgumentException e){
+                    System.out.println(e.getMessage());
+                    scanner.nextLine();
+                }
+
+            } while (valor != 4);
+
     }
 
     private static void adicionarTarefas () {
@@ -56,33 +71,45 @@ public class TaskListApp {
         int count = 0;
 
         System.out.println("QUANTAS TAREFAS VOCÊ QUER ADICIONAR ?");
-        int valor = scanner.nextInt();
+        numEscolhido = scanner.nextInt();
         scanner.nextLine();
 
         System.out.println("Digite a(s) tarefas: ");
 
         do {
+            // corrigir o bug de adicionar mais na lista apos a segunda vez;
 
             Task.listaTarefas.add(scanner.nextLine());
             count++;
 
-        } while (count < valor);
+        } while (count < numEscolhido);
 
         System.out.println("TAREFAS ADICIONADAS COM SUCESSO!!");
 
     }
 
     private static void exibirTarefas () {
-        // TODO: 27/03/2024
-        System.out.println(Task.listaTarefas);
+        int valor;
 
+        do {
 
+            System.out.println("==== SUAS TAREFAS ===");
+            for (int i = 0; i < numEscolhido; i++){
+                System.out.println((i + 1)+"- "+Task.listaTarefas.get(i));
+            }
+            System.out.println();
+            System.out.println("==== Digite 0 para voltar para o Menu:  ===");
+            valor = scanner.nextInt();
+
+        } while (valor != 0);
+
+        exibirMenu();
     }
 
     private static void removerTarefa (){
-        // TODO: 27/03/2024
-        System.out.println("removendo tarefa");
-        scanner.close();
+
+
+
     }
 
     private static void sair () {
